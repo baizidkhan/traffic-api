@@ -1,33 +1,76 @@
-traffic-api
-===========
+TripNao Traffic API Documentation
+Overview
+TripNao Traffic API is a simple HTTP API designed to facilitate SMS messaging to mobile phones worldwide and related functionalities. You can request or manipulate data using HTTP requests, either as HTTP POST requests with a JSON body or as basic POST or GET requests.
 
-Client API for Sales.lv Traffic service. Traffic is a platform for SMS messaging to mobile phones worldwide and other related functionality.
+Once you sign up for the TripNao Traffic service, you will receive a username and API key to make API calls.
 
-This is a simple HTTP API where data is requested or manipulated with HTTP requests. Requests can be made as HTTP POST requests with a JSON body or as basic POST or GET requests.
+Quick Start Guide
+Sign up for the TripNao Traffic Service:
 
-Once you've signed up for the Traffic service, you'll be provided with a username and an API key, required for making API calls.
+To begin, sign up for the TripNao Traffic service. After completing the sign-up process, you will receive a username and an API key, which are required for making API calls.
 
-There is a specification provided in the [wiki here](https://github.com/Sales-LV/traffic-api/wiki) about making the API calls yourself,
-as well as examples of using our libraries.
+API Documentation and Client Libraries:
 
-A quick start guide
-------------
-- Sign up for the [Traffic service with Sales.lv](http://www.sales.lv/lv/risinajumi/traffic/). Once you have done that, you will be provided with a username and an API key and all necessary data for API usage.
-- Take a look at the [API documentation](https://github.com/Sales-LV/traffic-api/wiki) and the client libraries.
+Explore the API documentation to understand how to make requests and handle responses.
 
-PHP client library
-------------
-PHP client library is located in `lib/php/traffic-api.php`. An usage example is provided in `lib/php/example.php`.
+You can also find client libraries that make integration easier. If you are using PHP, the traffic-api.php client library is located in the lib/php/ folder. A usage example is provided in lib/php/example.php.
 
 Requirements:
-* [PHP 5.2 or newer](http://www.php.net/)
-* One of these:
-    * [pecl_http](http://pecl.php.net/package/pecl_http) extension is recommended but not mandatory.
-    * enabled [cURL library](http://www.php.net/manual/en/book.curl.php).
-    * [allow_url_fopen](http://php.net/manual/en/filesystem.configuration.php) set to true.
+PHP version 5.2 or newer.
 
-Library usage is [described in the wiki](https://github.com/Sales-LV/traffic-api/wiki/PHP-API-library).
+One of the following is required:
 
-Feedback, support & questions
-------------
-Please write to support@sales.lv with any feedback, questions or suggestions that might arise.
+pecl_http extension (recommended but not mandatory).
+
+cURL library enabled.
+
+allow_url_fopen set to true.
+
+Library Usage:
+The usage of the PHP client library is detailed in the TripNao Traffic API Wiki. Be sure to follow the instructions there for proper setup and use.
+
+Example Usage:
+php
+Copy
+Edit
+// Example for using the TripNao Traffic API
+require_once 'lib/php/traffic-api.php';
+
+// Your API credentials
+$username = 'your_username';
+$api_key = 'your_api_key';
+
+// Create an instance of the Traffic API client
+$traffic_api = new TrafficApi($username, $api_key);
+
+// Send an SMS message
+$response = $traffic_api->sendSMS('recipient_number', 'Your message content');
+
+// Check the response
+if ($response->status === 'success') {
+    echo 'Message sent successfully!';
+} else {
+    echo 'Failed to send message: ' . $response->error_message;
+}
+Feedback, Support & Questions
+For any feedback, support inquiries, or suggestions, please reach out to support@tripnao.com.
+
+GitHub Repository
+You can find the source code and client libraries on our GitHub repository:
+
+TripNao Traffic API on GitHub
+
+About the API
+Traffic API by TripNao allows you to send SMS messages worldwide and access other related features. The API is simple to use and integrates well into any PHP-based application.
+
+Resources
+Readme: [Link to Wiki or documentation]
+
+Activity: [Link to activity tracking or issue tracker]
+
+Releases: [Link to release history or updates]
+
+Contributors
+Tomikawa Natsuha (Founder of TripNao)
+
+© 2025 TripNao, Inc.
